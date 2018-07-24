@@ -12,6 +12,8 @@ class WelcomeEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $user;
+
     /**
      * Create a new message instance.
      *
@@ -30,10 +32,9 @@ class WelcomeEmail extends Mailable
      */
     public function build()
     {
-        return $this->from($this->user->email)
-                ->markdown('emails.created.welcome')
-                ->with([
-                    'user' => $this->user,
-                ]);
+        return $this->markdown('emails.created.welcome')
+                    ->with([
+                        'user' => $this->user,
+                    ]);
     }
 }
