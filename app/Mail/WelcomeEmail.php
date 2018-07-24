@@ -33,6 +33,7 @@ class WelcomeEmail extends Mailable
     public function build()
     {
         return $this->markdown('emails.created.welcome')
+                    ->subject('Boas Vindas!!!')
                     ->with([
                         'user' => $this->user,
                     ]);
