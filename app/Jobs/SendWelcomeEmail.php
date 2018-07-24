@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use Illuminate\Notifications\Messages\MailMessage;
+use App\Mail\WelcomeEmail;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -33,6 +33,7 @@ class SendWelcomeEmail implements ShouldQueue
     public function handle(User $user)
     {
         // Send email welcome user
-        
+        Mail::to($user->email)
+                ->send(new WelcomeEmail($user));
     }
 }
