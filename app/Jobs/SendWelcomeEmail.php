@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -25,10 +27,16 @@ class SendWelcomeEmail implements ShouldQueue
     /**
      * Execute the job.
      *
+     * @param  User  $user
      * @return void
      */
-    public function handle()
+    public function handle(User $user)
     {
-        //
+        // Send email welcome user
+        return (new MailMessage)
+            ->subject('Boas Vindas!')
+            ->line('Seja bem vindo ao nosso projeto! =D')
+            ->action('Acessar o Site', url(config('app.url')))
+            ->line('É um prazer gigante lhe receber em nossa plataforma.');
     }
 }
