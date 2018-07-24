@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Jobs\SendWelcomeEmail;
-use App\User;
+use App\Models\User;
 
 class UserObserver
 {

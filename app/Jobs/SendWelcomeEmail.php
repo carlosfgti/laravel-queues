@@ -33,10 +33,6 @@ class SendWelcomeEmail implements ShouldQueue
     public function handle(User $user)
     {
         // Send email welcome user
-        return (new MailMessage)
-            ->subject('Boas Vindas!')
-            ->line('Seja bem vindo ao nosso projeto! =D')
-            ->action('Acessar o Site', url(config('app.url')))
-            ->line('É um prazer gigante lhe receber em nossa plataforma.');
+        
     }
 }
