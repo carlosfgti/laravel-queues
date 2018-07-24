@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\SendWelcomeEmail;
 use App\User;
 
 class UserObserver
@@ -14,7 +15,8 @@ class UserObserver
      */
     public function created(User $user)
     {
-        //
+        // Dispatching Job SendWelcomeEmail
+        SendWelcomeEmail::dispatch($user);
     }
 
     /**
